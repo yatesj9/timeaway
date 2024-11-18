@@ -32,9 +32,9 @@ const Navigation: React.FC = () => {
   };
 
   return (
-    <header className="bg-gray-800 text-white p-4">
+    <header className="text-white p-4">
       <nav className="flex justify-between items-center">
-        <h1 className="rounded text-2xl">Time Away</h1>
+        <h1 className="rounded text-black dark:text-white text-2xl">Time Away</h1>
         <div className="flex items-center space-x-4">
           <button className="button-cyan">New Request</button>
           <div
