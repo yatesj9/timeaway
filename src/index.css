@@ -1,1 +1,9 @@
-@tailwind base; @tailwind components; @tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .button-cyan {
+    @apply rounded bg-cyan-500 hover:bg-cyan-300 p-3 shadow-lg shadow-cyan-500/50 text-white;
+  }
+}
