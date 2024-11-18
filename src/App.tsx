@@ -10,10 +10,11 @@ export const url = {
 
 function App() {
   return (
-    <div className="container min-h-screen h-full max-w-full bg-gradient-to-r from-gray-400 to-gray-400">
+    <div className="container min-h-screen h-full max-w-full bg-white dark:bg-gray-900">
       <Navigation />
+
       <div className="grid grid-cols-1 p-4">
-          {/* <h1>Time Away</h1> */}
+        <h1 className="dark:text-white">Time Away Application</h1>
       </div>
     </div>
   );
