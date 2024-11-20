@@ -35,7 +35,11 @@ function format_date(date: Date | null) {
   return `${month}/${day}/${year}`;
 }
 
-const RequestModal: React.FC<RequestModalProps> = ({ isOpen, closeModal,handleReloadRequests }) => {
+const RequestModal: React.FC<RequestModalProps> = ({
+  isOpen,
+  closeModal,
+  handleReloadRequests,
+}) => {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(new Date());
   const [startTime, setStartTime] = useState<Date | null>(new Date());
@@ -111,7 +115,6 @@ const RequestModal: React.FC<RequestModalProps> = ({ isOpen, closeModal,handleRe
     } catch (error) {
       console.error("Error:", error);
     }
-    // console.log(requestData);
   };
 
   return (

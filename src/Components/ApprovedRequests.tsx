@@ -4,6 +4,7 @@ interface ApprovedRequestsProps {
   isOpen: number | null;
   setIsOpen: (value: number | null) => void;
   requests: RequestsType[];
+  reload: () => void;
 }
 
 const ApprovedRequests: React.FC<ApprovedRequestsProps> = ({

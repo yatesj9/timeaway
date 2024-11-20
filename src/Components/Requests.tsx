@@ -7,6 +7,7 @@ import CompletedRequests from "./CompletedRequests";
 
 interface RequestsProps {
   reloadRequests: boolean;
+  handleReloadRequests: () => void; 
 }
 
 export interface RequestsType {
@@ -23,10 +24,12 @@ export interface RequestsType {
 }
 
 function filter_requests(requests: RequestsType[], request_filter: string) {
-  return requests.filter((request) => request.status.toLowerCase().includes(request_filter.toLowerCase()))
+  return requests.filter((request) =>
+    request.status.toLowerCase().includes(request_filter.toLowerCase()),
+  );
 }
 
-const Requests: React.FC<RequestsProps> = ({ reloadRequests }) => {
+const Requests: React.FC<RequestsProps> = ({ reloadRequests,handleReloadRequests }) => {
   const [open, setOpen] = useState<number | null>(null);
   const [requests, setRequests] = useState<RequestsType[]>([]);
 
@@ -49,15 +52,32 @@ const Requests: React.FC<RequestsProps> = ({ reloadRequests }) => {
     <div className="flex space-x-4 pt-10">
       <div className="flex-none basis-30 p-4"> </div>
       <div className="flex-grow p-4">
-        <PendingRequests isOpen={open} setIsOpen={setOpen} requests={filteredPending} />
-        <ApprovedRequests isOpen={open} setIsOpen={setOpen} requests={filterApproved} />
-        <ProcessedRequests isOpen={open} setIsOpen={setOpen} requests={filterProcessed} />
-        <CompletedRequests isOpen={open} setIsOpen={setOpen} requests={filterCompleted} />
-
+        <PendingRequests
+          isOpen={open}
+          setIsOpen={setOpen}
+          requests={filteredPending}
+          reload={handleReloadRequests}
+        />
+        <ApprovedRequests
+          isOpen={open}
+          setIsOpen={setOpen}
+          requests={filterApproved}
+          reload={handleReloadRequests}
+        />
+        <ProcessedRequests
+          isOpen={open}
+          setIsOpen={setOpen}
+          requests={filterProcessed}
+        />
+        <CompletedRequests
+          isOpen={open}
+          setIsOpen={setOpen}
+          requests={filterCompleted}
+        />
       </div>
       <div className="flex-none basis-30 p-4"></div>
     </div>
   );
-}
+};
 
 export default Requests;
