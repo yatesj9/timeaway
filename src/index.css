@@ -6,4 +6,11 @@
   .button-cyan {
     @apply rounded bg-cyan-500 hover:bg-cyan-300 p-3 shadow-lg shadow-cyan-500/50 text-white;
   }
+  .button-approve {
+    @apply rounded bg-rose-500 hover:bg-rose-300 p-3 shadow-lg shadow-rose-500/50 text-white;
+  }
+  .button-process {
+    @apply rounded bg-orange-500 hover:bg-orange-300 p-3 shadow-lg shadow-orange-500/50 text-white;
+  }
+
 }

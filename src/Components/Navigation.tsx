@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
+import RequestModal from "./RequestModal";
 
-const Navigation: React.FC = () => {
+interface NavigationProps {
+  handleReloadRequests: () => void;
+}
+
+const Navigation: React.FC<NavigationProps> = ({handleReloadRequests}) => {
   const [darkMode, setDarkMode] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -31,12 +37,20 @@ const Navigation: React.FC = () => {
     });
   };
 
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
+    <>
     <header className="text-white p-4">
       <nav className="flex justify-between items-center">
-        <h1 className="rounded text-black dark:text-white text-2xl">Time Away</h1>
+        <h1 className="rounded text-black dark:text-white text-2xl">
+          Time Away
+        </h1>
         <div className="flex items-center space-x-4">
-          <button className="button-cyan">New Request</button>
+          <button className="button-cyan" onClick={openModal}>
+            New Request
+          </button>
           <div
             className="relative flex items-center justify-center w-12 h-6 bg-gray-400 rounded-full cursor-pointer"
             onClick={toggleDarkMode}
@@ -62,6 +76,9 @@ const Navigation: React.FC = () => {
         </div>
       </nav>
     </header>
+
+    <RequestModal isOpen={isModalOpen} closeModal={closeModal} handleReloadRequests={handleReloadRequests}/>
+    </>
   );
 };
 
