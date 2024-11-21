@@ -14,10 +14,14 @@ timeaway
 	- src
 		- assets
 		- Components
-			- ConfirmationModal.tsx 
-			- DropDownButton.tsx
-			- RequestModal.tsx
+			- ApprovedRequests.tsx 
+			- CompletedRequests.tsx
+			- ConfirmationModal.tsx
 			- Navigation.tsx
+			- PendingRequests.tsx
+			- ProcessedRequests.tsx
+			- RequestModal.tsx
+			- Requests.tsx
 		- App.tsx
 		- index.css
 		- main.tsx

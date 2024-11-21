@@ -62,7 +62,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
             </button>
             <button
               type="submit"
-              className="button-delete mt-4 flex justify-center items-center"
+              className="button-confirm mt-4 flex justify-center items-center"
             >
               <span className="mr-2">CONFIRM</span>
               <svg

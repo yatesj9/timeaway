@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import { url } from "../App";
+import newRequest from "../assets/NewRequest.svg";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -124,7 +125,12 @@ const RequestModal: React.FC<RequestModalProps> = ({
     <form onSubmit={handleSubmit}>
       <div className="fixed flex inset-0 bg-gray-600 bg-opacity-50 justify-center items-center z-50">
         <div className="dark:bg-gray-500 bg-white p-6 rounded shadow-lg w-3/5">
-          <h1 className="text-black">New Request Modal</h1>
+          <div className="grid grid-cols-3 gap-4">
+            <div className="col-start-2 flex justify-center text-black m-3 text-3xl">
+              {/* New Request */}
+              <img src={newRequest} alt="New Request" />
+            </div>
+          </div>
           <div className="container grid grid-cols-2">
             <p className="dark:text-white text-black">
               Name:
@@ -224,7 +230,7 @@ const RequestModal: React.FC<RequestModalProps> = ({
             </button>
             <button
               type="submit"
-              className="button-cyan mt-4 flex justify-center items-center"
+              className="button-save mt-4 flex justify-center items-center"
             >
               <span className="mr-2">SAVE</span>
               <svg

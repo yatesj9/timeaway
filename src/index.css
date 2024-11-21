@@ -20,4 +20,11 @@
     @apply bg-indigo-500 p-2 pl-3 pr-3 m-3 rounded-lg text-white   
                                   shadow-lg shadow-indigo-500/50 hover:bg-indigo-300;
   }
+  .button-confirm {
+    @apply bg-green-500 p-2 pl-3 pr-3 m-3 rounded-lg text-white drop-shadow 
+                                  shadow-lg shadow-green-500/50 hover:bg-green-300;
+  }
+  .button-save {
+    @apply rounded bg-green-500 hover:bg-green-300 p-3 shadow-lg shadow-green-500/50 text-white;
+  }
 }
