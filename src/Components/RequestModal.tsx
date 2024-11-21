@@ -29,8 +29,8 @@ function format_time(date: Date | null) {
 }
 
 function format_date(date: Date | null) {
-  const month = date ? date.getMonth() : 0;
-  const day = date ? date.getDay() : 0;
+  const month = date ? date.getMonth() + 1 : 0;
+  const day = date ? date.getDate() : 0;
   const year = date ? date.getFullYear() : 0;
   return `${month}/${day}/${year}`;
 }
@@ -40,10 +40,13 @@ const RequestModal: React.FC<RequestModalProps> = ({
   closeModal,
   handleReloadRequests,
 }) => {
+  const defaultTime = new Date();
+  defaultTime.setHours(0, 0, 0, 0);
+
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(new Date());
-  const [startTime, setStartTime] = useState<Date | null>(new Date());
-  const [endTime, setEndTime] = useState<Date | null>(new Date());
+  const [startTime, setStartTime] = useState<Date | null>(defaultTime);
+  const [endTime, setEndTime] = useState<Date | null>(defaultTime);
 
   const [requestData, setRequestData] = useState<localRequest>({
     name: "",
@@ -59,13 +62,13 @@ const RequestModal: React.FC<RequestModalProps> = ({
 
   if (!isOpen) return null;
 
+  const formatTime = format_time(startTime);
+  const formatEndTime = format_time(endTime);
+  const formatStartDate = format_date(startDate);
+  const formatEndDate = format_date(endDate);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
-    const formatTime = format_time(startTime);
-    const formatEndTime = format_time(endTime);
-    const formatStartDate = format_date(startDate);
-    const formatEndDate = format_date(endDate);
 
     setRequestData({
       ...requestData,

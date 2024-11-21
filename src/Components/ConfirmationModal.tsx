@@ -5,6 +5,7 @@ interface ConfirmationModalProps {
   closeModal: () => void;
   selectedRequestId: string | null;
   reload: () => void;
+  status: string;
 }
 
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
@@ -12,6 +13,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   closeModal,
   selectedRequestId,
   reload,
+  status,
 }) => {
   if (!isOpen) return null;
 
@@ -24,7 +26,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ status: "Approved" }),
+      body: JSON.stringify({ status: status }),
     })
       .then(() => {
         reload();
@@ -36,7 +38,11 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   return (
     <div className="fixed flex inset-0 bg-gray-600 bg-opacity-50 justify-center items-center z-50">
       <div className="dark:bg-gray-700 dark:text-white bg-white p-6 rounded-lg shadow-md dark:shadow-cyan-500/50 w-1/4">
-        <div className="text-center m-3 text-2xl">Approve Request</div>
+        <div className="text-center m-3 text-2xl">
+          {status?.toLowerCase() === "approved"
+            ? "Approve Request"
+            : "Process Request"}
+        </div>
         <form onSubmit={onSubmitApprove}>
           <div className="container grid grid-cols-2">
             <button
@@ -57,7 +63,6 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
             <button
               type="submit"
               className="button-delete mt-4 flex justify-center items-center"
-              // onClick={() => hideModal("delete")}
             >
               <span className="mr-2">CONFIRM</span>
               <svg

@@ -75,7 +75,13 @@ const PendingRequests: React.FC<PendingRequestsProps> = ({
           )}
         </div>
       </div>
-      <ConfirmationModal isOpen={isModalOpen} closeModal={closeModal} selectedRequestId={selectedRequestId} reload={reload}/>
+      <ConfirmationModal
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        selectedRequestId={selectedRequestId}
+        reload={reload}
+        status="Approved"
+      />
     </>
   );
 };
