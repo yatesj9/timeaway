@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import { FaTrashAlt } from "react-icons/fa";
+
 import { RequestsType } from "./Requests";
 import ConfirmationModal from "./ConfirmationModal";
+import DeleteModal from "./DeleteModal";
 
 interface PendingRequestsProps {
   isOpen: number | null;
@@ -19,6 +22,9 @@ const PendingRequests: React.FC<PendingRequestsProps> = ({
     setIsOpen(1);
   }, []);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
+
   const [selectedRequestId, setSelectedRequestId] = useState<string | null>(
     null,
   );
@@ -28,6 +34,12 @@ const PendingRequests: React.FC<PendingRequestsProps> = ({
     setIsModalOpen(true);
   };
   const closeModal = () => setIsModalOpen(false);
+  const closeDelete = () => setDeleteModalOpen(false);
+
+  const openDeleteModal = (requestId: string) => {
+    setSelectedRequestId(requestId);
+    setDeleteModalOpen(true);
+  };
 
   return (
     <>
@@ -46,8 +58,15 @@ const PendingRequests: React.FC<PendingRequestsProps> = ({
                   {requests.map((request) => (
                     <li
                       key={request._id.$oid}
-                      className="dark:bg-stone-800 mt-3 p-2 shadow dark:shadow-cyan-500/50 shadow-gray-500/50 "
+                      className="dark:bg-stone-800 mt-3 p-2 shadow dark:shadow-cyan-500/50 shadow-gray-500/50 relative"
                     >
+                      <button
+                        onClick={() => openDeleteModal(request._id.$oid)}
+                        className="absolute bottom-2 right-4 text-red-500 hover:text-red-700"
+                      >
+                        <FaTrashAlt size={20} />
+                      </button>
+
                       <div className="grid grid-cols-6 gap-3">
                         <p>Name: {request.name}</p>
                         <p>Start Date: {request.start_date}</p>
@@ -81,6 +100,12 @@ const PendingRequests: React.FC<PendingRequestsProps> = ({
         selectedRequestId={selectedRequestId}
         reload={reload}
         status="Approved"
+      />
+      <DeleteModal
+        isOpen={deleteModalOpen}
+        closeModal={closeDelete}
+        selectedRequestId={selectedRequestId}
+        reload={reload}
       />
     </>
   );

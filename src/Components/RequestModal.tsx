@@ -68,7 +68,9 @@ const RequestModal: React.FC<RequestModalProps> = ({
   const formatStartDate = format_date(startDate);
   const formatEndDate = format_date(endDate);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     const { name, value } = e.target;
 
     setRequestData({
@@ -124,7 +126,7 @@ const RequestModal: React.FC<RequestModalProps> = ({
   return (
     <form onSubmit={handleSubmit}>
       <div className="fixed flex inset-0 bg-gray-600 bg-opacity-50 justify-center items-center z-50">
-        <div className="dark:bg-gray-500 bg-white p-6 rounded shadow-lg w-3/5">
+        <div className="dark:bg-gray-700 dark:text-white bg-white p-6 rounded-lg shadow-md dark:shadow-cyan-500/50 w-3/5">
           <div className="grid grid-cols-3 gap-4">
             <div className="col-start-2 flex justify-center text-black m-3 text-3xl">
               {/* New Request */}
@@ -194,25 +196,58 @@ const RequestModal: React.FC<RequestModalProps> = ({
             </div>
             <p className="dark:text-white text-black">
               Charge Against:
-              <input
-                className="p-2 mr-2 w-full border-2 dark:text-black border-gray-300 shadow-lg rounded-lg forus:outline-none focus:border-blue-500"
+              {/* <input */}
+              {/*   className="p-2 mr-2 w-full border-2 dark:text-black border-gray-300 shadow-lg rounded-lg forus:outline-none focus:border-blue-500" */}
+              {/*   name="charge_against" */}
+              {/*   value={requestData.charge_against} */}
+              {/*   onChange={handleChange} */}
+              {/*   type="text" */}
+              {/*   placeholder="Charge Against" */}
+              {/* /> */}
+              <select
+                className="p-2 mt-4 ml-4 dark:text-black text-white border-2 border-gray-300 shadow-lg rounded-lg focus:outline-none focus:border-blue-500"
                 name="charge_against"
                 value={requestData.charge_against}
                 onChange={handleChange}
-                type="text"
-                placeholder="Charge Against"
-              />
+              >
+                <option value="">--Select--</option>
+                <option value="Vacation">Vacation</option>
+                <option value="BankedTime">Banked Time</option>
+                <option value="BankedStatTime">Banked Stat Time</option>
+                <option value="UnPaidTime">Unpaid Time</option>
+                <option value="Other">Other</option>
+                {/* {vlanDetails.map((vlan) => ( */}
+                {/*   <option key={vlan.vlan} value={vlan.vlan}> */}
+                {/*     {vlan.vlan} */}
+                {/*   </option> */}
+                {/* ))} */}
+              </select>
             </p>
             <p className="dark:text-white text-black">
               Manager:
-              <input
-                className="p-2 ml-2 w-full border-2 dark:text-black border-gray-300 shadow-lg rounded-lg forus:outline-none focus:border-blue-500"
+              {/* <input */}
+              {/*   className="p-2 ml-2 w-full border-2 dark:text-black border-gray-300 shadow-lg rounded-lg forus:outline-none focus:border-blue-500" */}
+              {/*   name="manager" */}
+              {/*   value={requestData.manager} */}
+              {/*   onChange={handleChange} */}
+              {/*   type="text" */}
+              {/*   placeholder="Manager" */}
+              {/* /> */}
+              <select
+                className="p-2 mt-4 ml-4 dark:text-black text-white border-2 border-gray-300 shadow-lg rounded-lg focus:outline-none focus:border-blue-500"
                 name="manager"
                 value={requestData.manager}
                 onChange={handleChange}
-                type="text"
-                placeholder="Manager"
-              />
+              >
+                <option value="">--Approver--</option>
+                <option value="Approver 1">Approver 1</option>
+                <option value="Approver 2">Approver 2</option>
+                {/* {vlanDetails.map((vlan) => ( */}
+                {/*   <option key={vlan.vlan} value={vlan.vlan}> */}
+                {/*     {vlan.vlan} */}
+                {/*   </option> */}
+                {/* ))} */}
+              </select>
             </p>
             <button
               className="button-cyan mr-4 mt-4 flex justify-center items-center"

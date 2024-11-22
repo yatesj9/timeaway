@@ -45,7 +45,7 @@ const ApprovedRequests: React.FC<ApprovedRequestsProps> = ({
                       key={request._id.$oid}
                       className="dark:bg-stone-800 mt-3 p-2 shadow dark:shadow-cyan-500/50 shadow-gray-500/50 "
                     >
-                      <div className="grid grid-cols-6 gap-3">
+                     <div className="grid grid-cols-6 gap-3">
                         <p>Name: {request.name}</p>
                         <p>Start Date: {request.start_date}</p>
                         <p>End Date: {request.end_date}</p>

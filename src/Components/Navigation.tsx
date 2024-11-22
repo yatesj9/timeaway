@@ -7,7 +7,7 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({ handleReloadRequests }) => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
@@ -15,9 +15,13 @@ const Navigation: React.FC<NavigationProps> = ({ handleReloadRequests }) => {
     if (savedTheme === "dark") {
       setDarkMode(true);
       document.documentElement.classList.add("dark"); // Enable dark mode
-    } else {
+    } else if (savedTheme === "light"){
       setDarkMode(false);
       document.documentElement.classList.remove("dark"); // Default to light mode
+    } else {
+      setDarkMode(true);
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme","dark");
     }
   }, []);
 
@@ -44,7 +48,7 @@ const Navigation: React.FC<NavigationProps> = ({ handleReloadRequests }) => {
     <>
       <header className="text-white p-4">
         <nav className="flex justify-between items-center">
-          <h1 className="rounded text-black dark:text-white text-2xl">
+          <h1 className="rounded text-black dark:text-white text-5xl">
             Time Away
           </h1>
           <div className="flex items-center space-x-4">
