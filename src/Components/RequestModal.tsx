@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import { url } from "../App";
 import newRequest from "../assets/NewRequest.svg";
@@ -60,6 +60,7 @@ const RequestModal: React.FC<RequestModalProps> = ({
     manager: "",
     status: "",
   });
+  // console.log(requestData);
 
   if (!isOpen) return null;
 
@@ -67,6 +68,39 @@ const RequestModal: React.FC<RequestModalProps> = ({
   const formatEndTime = format_time(endTime);
   const formatStartDate = format_date(startDate);
   const formatEndDate = format_date(endDate);
+
+  const handleDateChange = (name: string, date: Date | null) => {
+  const setters: Record<
+      string,
+      React.Dispatch<React.SetStateAction<Date | null>>
+    > = {
+      start_date: setStartDate,
+      end_date: setEndDate,
+    };
+    setters[name]?.(date);
+
+
+    setRequestData({
+      ...requestData,
+      [name]: format_date(date),
+    });
+  };
+
+  const handleTimeChange = (name: string, time: Date | null) => {
+    const setters: Record<
+      string,
+      React.Dispatch<React.SetStateAction<Date | null>>
+    > = {
+      start_time: setStartTime,
+      end_time: setEndTime,
+    };
+    setters[name]?.(time);
+
+    setRequestData({
+      ...requestData,
+      [name]: format_time(time),
+    });
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -161,7 +195,7 @@ const RequestModal: React.FC<RequestModalProps> = ({
               <DatePicker
                 className="ml-4 dark:text-black bg-gray-300"
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                onChange={(date) => handleDateChange("start_date", date)}
               />
             </div>
             <div className="pt-3 dark:text-white text-black">
@@ -169,7 +203,7 @@ const RequestModal: React.FC<RequestModalProps> = ({
               <DatePicker
                 className="ml-4 dark:text-black bg-gray-300"
                 selected={endDate}
-                onChange={(date) => setEndDate(date)}
+                onChange={(date) => handleDateChange("end_date", date)}
               />
             </div>
             <div className="pt-3 dark:text-white text-black">
@@ -180,7 +214,7 @@ const RequestModal: React.FC<RequestModalProps> = ({
                 showTimeSelectOnly
                 dateFormat="p"
                 selected={startTime}
-                onChange={(date) => setStartTime(date)}
+                onChange={(date) => handleTimeChange("start_time", date)}
               />
             </div>
             <div className="pt-3 dark:text-white text-black">
@@ -191,7 +225,7 @@ const RequestModal: React.FC<RequestModalProps> = ({
                 showTimeSelectOnly
                 dateFormat="p"
                 selected={endTime}
-                onChange={(date) => setEndTime(date)}
+                onChange={(date) => handleTimeChange("end_time", date)}
               />
             </div>
             <p className="dark:text-white text-black">

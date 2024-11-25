@@ -16,7 +16,8 @@ const ProcessedRequests: React.FC<ProcessedRequestsProps> = ({
       <div className="mb-4">
         <button
           onClick={() => setIsOpen(isOpen === 3 ? null : 3)}
-          className="w-full text-left dark:shadow-md dark:shadow-cyan-500/50 shadow-md shadow-gray-500/50 dark:text-white text-black bg-stone-400 hover:bg-stone-300 dark:bg-stone-800 p-4 rounded-lg hover:dark:bg-stone-600 transition-colors"
+          className="w-full text-left dark:shadow-md dark:shadow-cyan-500/50 shadow-md shadow-gray-500/50 
+          dark:text-white text-black bg-stone-300/50 hover:bg-stone-200/50 dark:bg-stone-800 p-4 rounded-lg hover:dark:bg-stone-600 transition-colors"
         >
           PROCESSED - {requests.length}
         </button>
