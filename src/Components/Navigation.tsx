@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 import RequestModal from "./RequestModal";
+import timeAway from "../assets/TimeAway01.svg";
 
 interface NavigationProps {
   handleReloadRequests: () => void;
@@ -49,7 +50,8 @@ const Navigation: React.FC<NavigationProps> = ({ handleReloadRequests }) => {
       <header className="text-white p-4">
         <nav className="flex justify-between items-center">
           <h1 className="rounded text-black dark:text-white text-5xl">
-            Time Away
+            {/* Time Away */}
+            <img className="object-fill" src={timeAway} alt="Time Away" />
           </h1>
           <div className="flex items-center space-x-4">
             <button className="button-cyan" onClick={openModal}>

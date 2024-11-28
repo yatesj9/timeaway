@@ -17,7 +17,8 @@ function App() {
   const handleReloadRequests = () => {
     setReloadRequests((prev) => !prev);
   };
-return (
+
+  return (
     <div className="container min-h-screen h-full max-w-full bg-white dark:bg-gray-900">
       <Navigation handleReloadRequests={handleReloadRequests} />
       <Requests reloadRequests={reloadRequests} handleReloadRequests={handleReloadRequests}/>

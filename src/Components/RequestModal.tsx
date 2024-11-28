@@ -161,10 +161,10 @@ const RequestModal: React.FC<RequestModalProps> = ({
     <form onSubmit={handleSubmit}>
       <div className="fixed flex inset-0 bg-gray-600 bg-opacity-50 justify-center items-center z-50">
         <div className="dark:bg-gray-700 dark:text-white bg-white p-6 rounded-lg shadow-md dark:shadow-cyan-500/50 w-3/5">
-          <div className="grid grid-cols-3 gap-4">
-            <div className="col-start-2 flex justify-center text-black m-3 text-3xl">
+          <div className="grid grid-cols-1">
+            <div className="flex justify-center text-black">
               {/* New Request */}
-              <img src={newRequest} alt="New Request" />
+              <img className="object-fill" src={newRequest} alt="New Request" />
             </div>
           </div>
           <div className="container grid grid-cols-2">

@@ -49,7 +49,7 @@ const Requests: React.FC<RequestsProps> = ({ reloadRequests,handleReloadRequests
   const filterCompleted = filter_requests(requests, "completed");
 
   return (
-    <div className="flex space-x-4 pt-10">
+    <div className="flex space-x-4 pt-4">
       <div className="flex-none basis-30 p-4"> </div>
       <div className="flex-grow p-4">
         <PendingRequests
