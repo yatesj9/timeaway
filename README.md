@@ -29,6 +29,7 @@ timeaway
 	- ...	
 	
 ```
-![TimeAway-01](https://github.com/user-attachments/assets/7eaf0b0b-9972-43ea-986a-ab54a81edf78)
-![TimeAway-02](https://github.com/user-attachments/assets/5478d2a0-90a1-4fc0-9872-4a5d0bb228c0)
-![TimeAway-03](https://github.com/user-attachments/assets/4af980bd-7544-4005-ab08-a9adf01ee9b6)
+![TimeAway-01](https://github.com/user-attachments/assets/a9ecc6bf-18db-49a9-95fb-19199b6081f9)
+![TimeAway-02](https://github.com/user-attachments/assets/8309f6c4-c94d-4d2f-bff6-bc780259b7d3)
+![TimeAway-03](https://github.com/user-attachments/assets/bd4fed3f-7852-4859-9ad4-6b84e5d25c13)
+
